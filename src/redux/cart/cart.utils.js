@@ -1,9 +1,9 @@
 export const addItemToCart = (cartItems, cartItemToAdd) => {
-	const existingCartItem = cartItems.find(cartItem => cartItem.id === cartItemToAdd.id)
+	const existingCartItem = cartItems.find(cartItem => cartItem.selectedSize === cartItemToAdd.selectedSize)
 
 	if (existingCartItem) {
 		return cartItems.map(cartItem =>
-			cartItem.id === cartItemToAdd.id
+			cartItem.selectedSize === cartItemToAdd.selectedSize
 			? { ...cartItem, quantity: cartItem.quantity + 1 }
 			: cartItem
 		)

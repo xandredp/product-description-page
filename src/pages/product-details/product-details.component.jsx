@@ -14,7 +14,8 @@ import { ProductPageContainer,
 	StarIndicator,
 	ProductSizeContainer,
 	SizeButton,
-	AddToCartButton } from './product-details.styles'
+	AddToCartButton,
+	ErrorMessageContainer } from './product-details.styles'
 
 class ProductPage extends Component {
 	constructor(props) {
@@ -40,15 +41,19 @@ class ProductPage extends Component {
 						size: "L"
 					}
 				],
-			}
+			},
+			error: false,
 		}
 	}
 
 	handleAdd = (product) => {
-		if (this.state.product.selectedSize) {
-			this.props.addItem(product);
+		if (!this.state.product.selectedSize) {
+			this.setState({
+				error: true
+			})
+			return;
 		}
-		return;
+		this.props.addItem(product);
 	}
 
 	handleSelect = (size) => {
@@ -56,7 +61,8 @@ class ProductPage extends Component {
 			product: {
 				...this.state.product,
 				selectedSize: size
-			}
+			},
+			error: false
 		})
 	}
 
@@ -81,6 +87,9 @@ class ProductPage extends Component {
 						<SizeButton onClick={() => this.handleSelect("S")} className={product.selectedSize === "S" ? 'active' : ''} style={{marginRight: '10px'}}>S</SizeButton>
 						<SizeButton onClick={() => this.handleSelect("M")} className={product.selectedSize === "M" ? 'active' : ''} style={{marginRight: '10px'}}>M</SizeButton>
 						<SizeButton onClick={() => this.handleSelect("L")} className={product.selectedSize === "L" ? 'active' : ''}>L</SizeButton>
+						{
+							this.state.error ? <ErrorMessageContainer>Please select a size</ErrorMessageContainer> : ''
+						}
 					</ProductSizeContainer>
 					<AddToCartButton onClick={() => this.handleAdd(product)}>ADD TO CART</AddToCartButton>
 				</ProductTextContainer>

@@ -7,15 +7,15 @@ export const CartDropdownContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
-	border: 1px solid black;
+	border: 1px solid #CCCCCC;
 	background-color: white;
 	top: 50px;
-	right: 40px;
+	right: 5%;
 	z-index: 5;
 `
 
 export const CartItemsContainer = styled.div`
-	height: 240px;
+	height: 340px;
 	display: flex;
 	flex-direction: column;
 	overflow: scroll;

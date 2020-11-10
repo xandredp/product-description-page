@@ -20,6 +20,10 @@ export const ProductImageContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media only screen and (max-width: 700px) {
+		margin: 0 auto;
+	}
 `
 
 export const ProductImage = styled.img`
@@ -109,4 +113,10 @@ export const AddToCartButton = styled.button`
 		background-color: #222222;
 		color: #fff;
 	}
+`
+
+export const ErrorMessageContainer = styled.div`
+	margin: 10px;
+	color: #C90000;
+	font-size: 13px;
 `
