@@ -45,7 +45,7 @@ class ProductPage extends Component {
 	}
 
 	handleAdd = (product) => {
-		if (this.props.product.selectedSize) {
+		if (this.state.product.selectedSize) {
 			this.props.addItem(product);
 		}
 		return;
